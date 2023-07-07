@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>사용자 객체에 접근하기</title>
+  <script>
+    const a = {
+      name: '홍길동',
+      0: '전우치'
+    };
+    console.log(a.name);
+    console.log(a['name']);
+    console.log(a[0]); // a 라는 객체의 0이라는 필드 (배열이 아니다)
+  </script>
+</head>
+<body>
+  <p id="target">Hello</p>
+  <script>
+    // html 요소를 선택한 다음 => 소스를 발라서 더 편하게 사용할 수 있게 한다.
+    const $target = $('#target');
+    console.log($target['0']);
+    console.log($target); // 객체
+  </script>
+</body>
+</html>

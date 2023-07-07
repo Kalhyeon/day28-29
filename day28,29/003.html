@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>환율 api - 달러에 값을 입력하면 원화의 가격을 계산</title>
+  <script>
+    const api = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWUSD';
+    const result = await $.ajax(api);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

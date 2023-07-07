@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.8/dayjs.min.js"></script>
+  <title>환율 api</title>
+  <script>
+    'use strict'
+    // ES6 - 2015년 버전
+    // jQuery - 2014년 버전
+
+    // jQuery slim 은 $.ajax() 가 제외된다.
+    const api = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWUSD';
+    $(document).ready(async function() {
+      const date = new dayjs();
+      $('#usd').text(date.format("YYYY년 MM월 DD일자의 환율 : "));
+
+      let dollar = 0;
+      try {
+        // 실행할 코드들
+        const result = await $.ajax(api);
+        dollar = result[0].basePrice;
+        $('#usd2').text(dollar + '원');
+      }catch(err) {
+        // try 안에서 오류가 발생하면 자동으로 catch 로 이동
+        // 오류의 정보는 catch 절의 매개변수로 자동 전달된다.
+        console.log(err);
+      }
+
+      $('#dollar').on('keyup', function(e) {
+        if(e.keyCode===13) {
+          const result = $('#dollar').val() * dollar;
+          $('#won').val(result);
+        }
+      });
+
+      $('#won').on('keyup', function(e) {
+        if(e.keyCode===13) {
+          const result = $('#won').val() / dollar;
+          $('#dollar').val(result);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <div>
+      <span id="usd"></span>
+      <span id="usd2"></span>
+    </div>
+    <div>
+      <label for="dollar">미국 USD</label>
+      <input type="number" id="dollar">$
+      <br>
+      <label for="won">원화 KRW</label>
+      <input type="number" id="won">\
+    </div>
+  </div>
+</body>
+</html>

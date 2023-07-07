@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>주소 표시줄에서 정보를 가져온다</title>
+  <script>
+    // JS 의 객체
+    // 1. 내장 객체 - 자바가 제공하는 String 클래스처럼 JS 가 원래 가진 객체
+    // 2. 직접 만드는 객체 : {}
+    // 3. JS 는 웹 브라우저를 객체로 취급
+    //    window, window.locatino, window.history, window.document 등
+
+    // location 객체
+    // location.reload(); = F5
+    // location.href = "www.naver.com" : 주소가 www.naver.com 으로 변경
+    // location.search => ?부터 자름
+    console.log(location.search);
+
+    // location.search 값을 가진 객체를 만드는 방법
+    const p = new URLSearchParams(location.search);
+    console.log(p.get('pageno'));
+    // location.search => name=spring&age=20&password=1234
+  </script>
+</head>
+<body>
+  <!--
+    list.html : 글을 10개씩 잘라서 페이징
+      list.html?pageno=1 => list.html?pageno=3
+      read.html?no=11
+  -->
+</body>
+</html>
